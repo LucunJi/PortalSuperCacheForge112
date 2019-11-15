@@ -38,12 +38,12 @@ public class SuperCacheTeleporter extends Teleporter {
         long l = ChunkPos.asLong(j, k);
 
         //When there is vanilla cache
-        if (false) {
-//        if (this.destinationCoordinateCache.containsKey(l)) {
-            Teleporter.PortalPosition teleporter$portalposition = (Teleporter.PortalPosition) this.destinationCoordinateCache.get(l);
+//        if (false) { //Comment while testing
+        if (this.destinationCoordinateCache.containsKey(l)) {
+            Teleporter.PortalPosition portalPosition = this.destinationCoordinateCache.get(l);
             d0 = 0.0D;
-            blockpos = teleporter$portalposition;
-            teleporter$portalposition.lastUpdateTime = this.world.getTotalWorldTime();
+            blockpos = portalPosition;
+            portalPosition.lastUpdateTime = this.world.getTotalWorldTime();
             flag = false;
         } else {
             //Otherwise, use super cache

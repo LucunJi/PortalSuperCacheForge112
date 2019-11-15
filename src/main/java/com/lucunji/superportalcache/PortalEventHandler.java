@@ -1,12 +1,9 @@
 package com.lucunji.superportalcache;
 
-import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
-import net.minecraft.network.play.server.SPacketChangeGameState;
 import net.minecraft.network.play.server.SPacketEffect;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
@@ -14,14 +11,11 @@ import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.Teleporter;
-import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
-import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.EntityTravelToDimensionEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import org.apache.logging.log4j.LogManager;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -106,7 +100,8 @@ public class PortalEventHandler {
         Entity entity = EntityList.newEntity(entityEvent.getClass(), worldserver1);
 
         if (entity != null) {
-            Method method = Entity.class.getDeclaredMethod("copyDataFromOld", Entity.class);
+            Method method = Entity.class.getDeclaredMethod("func_180432_n", Entity.class);
+//            Method method = Entity.class.getDeclaredMethod("copyDataFromOld", Entity.class);
             method.setAccessible(true);
             method.invoke(entity, entityEvent);
 
@@ -130,7 +125,8 @@ public class PortalEventHandler {
         EntityPlayerMP player = ((EntityPlayerMP) e.getEntity());
         Teleporter teleporter = new SuperCacheTeleporter(player.getServer().getWorld(e.getDimension()));
 
-        Field enteredNetherPositionField = EntityPlayerMP.class.getDeclaredField("enteredNetherPosition");
+        Field enteredNetherPositionField = EntityPlayerMP.class.getDeclaredField("field_193110_cw");
+//        Field enteredNetherPositionField = EntityPlayerMP.class.getDeclaredField("enteredNetherPosition");
         enteredNetherPositionField.setAccessible(true);
 
         if (player.dimension == 0 && e.getDimension() == -1) {
@@ -143,9 +139,12 @@ public class PortalEventHandler {
 
         player.mcServer.getPlayerList().transferPlayerToDimension(player, e.getDimension(), teleporter);
         player.connection.sendPacket(new SPacketEffect(1032, BlockPos.ORIGIN, 0, false));
-        Field lastExperienceField = EntityPlayerMP.class.getDeclaredField("lastExperience");
-        Field lastHealthField = EntityPlayerMP.class.getDeclaredField("lastHealth");
-        Field lastFoodLevelField = EntityPlayerMP.class.getDeclaredField("lastFoodLevel");
+        Field lastExperienceField = EntityPlayerMP.class.getDeclaredField("field_71144_ck");
+        Field lastHealthField = EntityPlayerMP.class.getDeclaredField("field_71149_ch");
+        Field lastFoodLevelField = EntityPlayerMP.class.getDeclaredField("field_71146_ci");
+//        Field lastExperienceField = EntityPlayerMP.class.getDeclaredField("lastExperience");
+//        Field lastHealthField = EntityPlayerMP.class.getDeclaredField("lastHealth");
+//        Field lastFoodLevelField = EntityPlayerMP.class.getDeclaredField("lastFoodLevel");
         lastExperienceField.setAccessible(true);
         lastHealthField.setAccessible(true);
         lastFoodLevelField.setAccessible(true);
