@@ -1,0 +1,16 @@
+[
+{
+  "modid": "portalsupercache",
+  "name": "Portal Super Cache",
+  "description": "Your nether portals have better performance.",
+  "version": "0.1",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Lucun_Ji"],
+  "credits": "The Forge and FML guys",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
