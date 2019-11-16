@@ -5,6 +5,6 @@
 
 This mod is originally made with carpet mod for 1.13.2.
 
-When using this mod, your nether portals will search portal block at a high speed with the cost of slightly longer time of the first teleport.
+When using this mod, your game will search portal blocks at a high speed on teleport with the cost of slightly longer time of the first teleport.
 
-This mode is still in development (Alpha). Use it with care and feel free to report the issues.
+This mode is still under development (Alpha). Use it with care and feel free to report the issues.
