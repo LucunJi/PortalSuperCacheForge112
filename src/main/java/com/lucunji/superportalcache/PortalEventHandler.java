@@ -26,7 +26,7 @@ public class PortalEventHandler {
 
     @SubscribeEvent
     public static void onPortalBlockEvent(BlockEvent e) {
-        if (e.getWorld() instanceof WorldServer) {
+        if (e.getWorld() instanceof WorldServer && e.getPos().getY() < e.getWorld().provider.getActualHeight()) {
             SuperCacheHandler handler;
             if (e.getWorld().provider.getDimension() == -1) {
                 handler = SuperCacheHandler.getHandlerNether();
