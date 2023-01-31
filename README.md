@@ -1,4 +1,10 @@
+# Archived
+
+This mod is archived as it changes too much and has minor bugs.
+What's more, personally, I almost stopped playing Minecraft, especially Minecraft 1.12.
+
 # Portal Super Cache
+
 **for Minecraft Forge 1.12.2**
 
 ------
